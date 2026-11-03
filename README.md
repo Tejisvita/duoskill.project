@@ -27,3 +27,8 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## DuoSkill
+- Run: `npm i && npm run dev`. Data is stored in your browser (localStorage) with seeded demo accounts (password `demo123`).
+- C matching module: see `c-module/README.md`.
+- Netlify: build command `npm run build`; `netlify.toml` included.
