@@ -23,9 +23,9 @@ function Register() {
   const [f, setF] = useState({ name: "", email: "", password: "", location: "" });
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (f.password.length < 6) return toast.error("Password must be at least 6 characters");
+    if (f.password.length < 6) { toast.error("Password must be at least 6 characters"); return; }
     const err = actions.register(f);
-    if (err) return toast.error(err);
+    if (err) { toast.error(err); return; }
     toast.success("Account created! Now add your skills.");
     nav({ to: "/profile" });
   };

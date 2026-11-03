@@ -83,7 +83,7 @@ function SessionDialog({ kind, sess, onClose }: { kind: "schedule" | "notes" | "
   const [text, setText] = useState("");
   const save = () => {
     if (kind === "schedule") {
-      if (!f.date || !f.time) return toast.error("Pick a date and time");
+      if (!f.date || !f.time) { toast.error("Pick a date and time"); return; }
       actions.scheduleSession(sess.id, f);
       toast.success("Session scheduled");
     } else if (kind === "notes") {

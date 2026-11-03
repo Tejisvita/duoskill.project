@@ -19,7 +19,7 @@ export function RequestButton({ target, offer, want, size = "default", className
   const pending = s.requests.some((r) => r.status === "pending" && ((r.fromId === me.id && r.toId === target.id) || (r.toId === me.id && r.fromId === target.id)));
 
   const submit = () => {
-    if (!o || !w) return toast.error("Choose the skills to exchange");
+    if (!o || !w) { toast.error("Choose the skills to exchange"); return; }
     actions.sendRequest({ toId: target.id, offer: o, want: w, message: msg || `Hi ${target.name.split(" ")[0]}, want to swap ${o} for ${w}?` });
     toast.success(`Request sent to ${target.name}`);
     setOpen(false);
