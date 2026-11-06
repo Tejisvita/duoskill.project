@@ -23,7 +23,8 @@ function set(fn: (s: State) => State) {
 export function hydrateStore() {
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) {
+    // If the user already acted (e.g. clicked a demo login) before hydration, keep that state.
+    if (raw && state === null) {
       state = JSON.parse(raw) as State;
       listeners.forEach((l) => l());
     }
