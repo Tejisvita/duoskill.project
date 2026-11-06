@@ -6,11 +6,13 @@ const KEY = "duoskill-state-v1";
 let serverState: State | null = null;
 let state: State | null = null;
 const listeners = new Set<() => void>();
+let dirty = false;
 
 const getServer = () => (serverState ??= seedState());
 const get = () => (state ??= getServer());
 
 function set(fn: (s: State) => State) {
+  dirty = true;
   state = fn(get());
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
@@ -24,7 +26,7 @@ export function hydrateStore() {
   try {
     const raw = localStorage.getItem(KEY);
     // If the user already acted (e.g. clicked a demo login) before hydration, keep that state.
-    if (raw && state === null) {
+    if (raw && !dirty) {
       state = JSON.parse(raw) as State;
       listeners.forEach((l) => l());
     }
