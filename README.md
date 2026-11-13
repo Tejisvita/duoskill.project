@@ -32,3 +32,6 @@ npm run dev
 - Run: `npm i && npm run dev`. Data is stored in your browser (localStorage) with seeded demo accounts (password `demo123`).
 - C matching module: see `c-module/README.md`.
 - Netlify: build command `npm run build`; `netlify.toml` included.
+
+![duoskill working](Screenshot 2026-11-13 100115.png)
+
